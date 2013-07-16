@@ -1,0 +1,12 @@
+CC="mips-openwrt-linux-gcc"
+all: keepalivehttpc
+
+
+clean:
+	rm *.o keepalivehttpc
+
+keepalivehttpc: easysocket.o keepalivehttpc.o
+	$(CC) -g -o keepalivehttpc $^
+
+%.o: %.c
+	$(CC) -g -c $^
