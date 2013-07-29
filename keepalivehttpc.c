@@ -90,9 +90,9 @@ int main (int argc, char** argv) {
 
     if (urlPort) {
         port = atoi(urlPort);
-        if (port == 0) {
-            port = 80;
-        }
+    }
+    if (port == 0) {
+        port = 80;
     }
     if (path == NULL || path[0] == '\0') {
         path = "/";
@@ -100,7 +100,7 @@ int main (int argc, char** argv) {
     if (hostname == NULL || hostname[0] == '\0') {
         return usage();
     }
-    int httpSock = clientsock(hostname, 80);
+    int httpSock = clientsock(hostname, port);
 
     int optval;
     socklen_t optlen = sizeof(optval);
